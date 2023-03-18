@@ -1,6 +1,6 @@
 schemaVersion: 2.2.0
 metadata:
-  name: quarkus-jke
+  name: java-quarkus
   version: 1.2.1
   provider: Red Hat
   supportUrl: https://github.com/devfile-samples/devfile-support#support-information
@@ -16,12 +16,12 @@ metadata:
   attributes:
     alpha.dockerimage-port: 8081
 parent:
-  id: quarkus-jke
+  id: java-quarkus
   registryUrl: 'https://registry.devfile.io'
 components:
   - name: image-build
     image:
-      imageName: quarkus-jke-image:latest
+      imageName: java-quarkus-image:latest
       dockerfile:
         uri: src/main/docker/Dockerfile.jvm.staged
         buildContext: .
