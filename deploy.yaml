@@ -6,7 +6,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: java-quarkus-app
+      app: quarkus-jke-app
   template:
     metadata:
       labels:
