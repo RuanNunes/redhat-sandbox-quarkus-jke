@@ -1,0 +1,38 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: quarkus-jke
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quarkus-jke-app
+  template:
+    metadata:
+      labels:
+        app: quarkus-jke-app
+    spec:
+      containers:
+        - name: quarkus-jke
+          image: quarkus-jke-image:latest
+          ports:
+            - name: http
+              containerPort: 8081
+              protocol: TCP
+          resources:
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: quarkus-jke-svc
+spec:
+ports:
+  - name: http-8081
+    port: 8081
+    protocol: TCP
+    targetPort: 8081
+selector:
+  app: quarkus-jke-app
